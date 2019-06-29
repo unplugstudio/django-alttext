@@ -1,0 +1,14 @@
+*.pyc
+*.pyo
+*.
+*.sublime-workspace
+*.egg-info
+__pycache__
+.DS_Store
+.coverage
+.vscode
+local_settings.py
+/.eggs
+/.tox
+/build
+/dist
