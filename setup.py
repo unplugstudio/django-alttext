@@ -27,20 +27,20 @@ if sys.argv[:2] == ["setup.py", "bump"]:
         f.write('__version__ = "%s"\n' % version)
     with open("package.json", "w") as f:
         f.write('{ "version": "%s" }' % version)
-    subprocess.call("conventional-changelog -p angular -i CHANGELOG.md -s", shell=True)
+    subprocess.check_call("conventional-changelog -p angular -i CHANGELOG.md -s", shell=True)
     os.remove("package.json")
-    subprocess.call("git commit -am \"chore: bump version to %s\"" % version)
+    subprocess.check_call("git commit -am \"chore: bump version to %s\"" % version)
     sys.exit()
 
 # Tag and release the package to PyPI
 if sys.argv[:2] == ["setup.py", "release"]:
-    subprocess.call("git tag v%s" % __version__)
-    subprocess.call("git push")
-    subprocess.call("git push --tags")
-    subprocess.call("rm -rf dist/")
-    subprocess.call("python setup.py sdist")
-    subprocess.call("python setup.py bdist_wheel")
-    subprocess.call("twine upload dist/*")
+    subprocess.check_call("git tag v%s" % __version__)
+    subprocess.check_call("git push")
+    subprocess.check_call("git push --tags")
+    subprocess.check_call("rm -rf dist/")
+    subprocess.check_call("python setup.py sdist")
+    subprocess.check_call("python setup.py bdist_wheel")
+    subprocess.check_call("twine upload dist/*")
     sys.exit()
 
 setup(
