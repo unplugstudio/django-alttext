@@ -16,7 +16,7 @@ Install
 Mezzanine integration
 ---------------------
 
-If you're using Mezzanine and filebrowser-safe, add ``alttext.filebrowser-safe`` to your INSTALLED_APPS before ``mezzanine.boot`` to enable alt-text links on the media library.
+If you're using Mezzanine and filebrowser-safe, add ``alttext.mezzanine`` to your INSTALLED_APPS before ``mezzanine.boot`` to enable alt-text links in the admin. A link to "Edit alt text" will appear next to each ``FileField`` in Add and Change forms.
 
 Contributing
 ------------

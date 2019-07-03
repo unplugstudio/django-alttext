@@ -1,0 +1,28 @@
+{% overextends "admin/base_site.html" %}
+
+{% block javascripts %}
+	{{ block.super }}
+	<script>
+		var MEDIA_URL = '{{ MEDIA_URL }}'
+		var altTextUrl = '{% url "admin:get_or_create_alttext" %}'
+
+		jQuery(function($) {
+			// Add a link to edit alt text after each FileBrowser thumbnail
+			$('.mezz-fb-thumbnail a[href^="' + MEDIA_URL + '"]').each(function(i, link) {
+				var path = link.getAttribute('href').replace(MEDIA_URL, '')
+				var href = altTextUrl + '?path=' + encodeURIComponent(path) + '&_popup=1'
+
+				var $altTextLink = $('<a/>')
+				$altTextLink
+					.insertAfter(link)
+					.attr('id', link.id + '_alttext')
+					.attr('href', href)
+					.text('Edit Alt Text')
+					.on('click', function(event) {
+						event.preventDefault()
+						showRelatedObjectPopup(this) // Provided by Django
+					})
+			})
+		})
+	</script>
+{% endblock javascripts %}
