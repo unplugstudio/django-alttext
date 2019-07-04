@@ -1,3 +1,7 @@
+## [1.0.1](https://github.com/unplugstudio/django-alttext/compare/v1.0.0...v1.0.1) (2019-07-04)
+
+
+
 # 1.0.0 (2019-07-03)
 
 
