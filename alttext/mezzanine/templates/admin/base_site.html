@@ -20,20 +20,20 @@
 		jQuery(function($) {
 			// Add a link to edit alt text after each FileBrowser thumbnail
 			$('.mezz-fb-thumbnail a').each(function(i, imgLink) {
-				$('<a/>')
-					.insertAfter(imgLink)
-					.attr('id', imgLink.id + '_alttext')
-					.attr('href', getHref(imgLink))
-					.text('Edit Alt Text')
-					.on('click', function(event) {
-						event.preventDefault()
-						this.setAttribute('href', getHref(imgLink))
-						if (this.getAttribute('href')) {
-							showRelatedObjectPopup(this) // Open popup, provided by Django
-						} else {
-							alert('Select an image first to edit alt text')
-						}
-					})
+				$(imgLink).after('<a href="#" class="alttext-link">Edit Alt Text</a>')
+			})
+
+			// Use a delegated click handler to catch all alttext links
+			// even the ones dynamically inserted by inlines
+			$(document).on('click', '.alttext-link', function(event) {
+				var imgLink = this.previousElementSibling
+				event.preventDefault()
+				this.setAttribute('href', getHref(imgLink))
+				if (this.getAttribute('href')) {
+					showRelatedObjectPopup(this) // Open popup, provided by Django
+				} else {
+					alert('Select an image first to edit alt text')
+				}
 			})
 		})
 	</script>
