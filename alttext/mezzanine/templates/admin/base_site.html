@@ -20,7 +20,10 @@
 		jQuery(function($) {
 			// Add a link to edit alt text after each FileBrowser thumbnail
 			$('.mezz-fb-thumbnail a').each(function(i, imgLink) {
-				$(imgLink).after('<a href="#" class="alttext-link">Edit Alt Text</a>')
+				$('<a href="#">Edit Alt Text</a>')
+					.attr('id', imgLink.id + '-alttext') // Required to close popups
+					.addClass('alttext-link')
+					.insertAfter(imgLink)
 			})
 
 			// Use a delegated click handler to catch all alttext links
