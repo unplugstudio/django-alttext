@@ -1,3 +1,12 @@
+## [1.0.4](https://github.com/unplugstudio/django-alttext/compare/v1.0.3...v1.0.4) (2019-07-13)
+
+
+### Bug Fixes
+
+* unquote paths before saving them ([9817120](https://github.com/unplugstudio/django-alttext/commit/9817120))
+
+
+
 ## [1.0.3](https://github.com/unplugstudio/django-alttext/compare/v1.0.2...v1.0.3) (2019-07-13)
 
 
