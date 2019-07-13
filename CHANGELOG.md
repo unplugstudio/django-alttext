@@ -1,3 +1,12 @@
+## [1.0.3](https://github.com/unplugstudio/django-alttext/compare/v1.0.2...v1.0.3) (2019-07-13)
+
+
+### Bug Fixes
+
+* make sure popups close after saving alt text ([5de27af](https://github.com/unplugstudio/django-alttext/commit/5de27af))
+
+
+
 ## [1.0.2](https://github.com/unplugstudio/django-alttext/compare/v1.0.1...v1.0.2) (2019-07-06)
 
 
