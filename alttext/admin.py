@@ -1,5 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
+try:
+    from urllib.parse import unquote  # Python 3
+except ImportError:
+    from urllib import unquote  # Python 2
+
 from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
@@ -42,7 +47,7 @@ class AltTextAdmin(admin.ModelAdmin):
 
         # Redirect and preserve GET params
         # Required for admin popups to work correctly
-        alttext, created = AltText.objects.get_or_create(path=path)
+        alttext, created = AltText.objects.get_or_create(path=unquote(path))
         href = resolve_url("admin:alttext_alttext_change", alttext.pk)
         return redirect("{}?{}".format(href, request.GET.urlencode()))
 
