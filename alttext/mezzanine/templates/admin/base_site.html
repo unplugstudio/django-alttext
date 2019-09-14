@@ -18,6 +18,14 @@
 		}
 
 		jQuery(function($) {
+			try {
+				// Django 1.8 and later
+				var popupFunction = showRelatedObjectPopup
+			} catch {
+				// Django 1.7 and earlier
+				var popupFunction = showRelatedObjectLookupPopup
+			}
+
 			// Add a link to edit alt text after each FileBrowser thumbnail
 			$('.mezz-fb-thumbnail a').each(function(i, imgLink) {
 				$('<a href="#">Edit Alt Text</a>')
@@ -33,7 +41,7 @@
 				event.preventDefault()
 				this.setAttribute('href', getHref(imgLink))
 				if (this.getAttribute('href')) {
-					showRelatedObjectPopup(this) // Open popup, provided by Django
+					popupFunction(this) // Open popup, provided by Django
 				} else {
 					alert('Select an image first to edit alt text')
 				}

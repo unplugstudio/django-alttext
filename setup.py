@@ -27,9 +27,11 @@ if sys.argv[:2] == ["setup.py", "bump"]:
         f.write('__version__ = "%s"\n' % version)
     with open("package.json", "w") as f:
         f.write('{ "version": "%s" }' % version)
-    subprocess.check_call("conventional-changelog -p angular -i CHANGELOG.md -s", shell=True)
+    subprocess.check_call(
+        "conventional-changelog -p angular -i CHANGELOG.md -s", shell=True
+    )
     os.remove("package.json")
-    subprocess.check_call("git commit -am \"chore: bump version to %s\"" % version)
+    subprocess.check_call('git commit -am "chore: bump version to %s"' % version)
     sys.exit()
 
 # Tag and release the package to PyPI
@@ -64,8 +66,6 @@ setup(
     ],
     keywords="django mezzanine",
     packages=find_packages(),
-    install_requires=[
-        "django>=1.8",
-    ],
-    include_package_data=True
+    install_requires=["django>=1.6"],
+    include_package_data=True,
 )

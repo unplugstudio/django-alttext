@@ -5,17 +5,18 @@ try:
 except ImportError:
     from urllib import unquote  # Python 2
 
+from django import VERSION
 from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
-from django.shortcuts import redirect, resolve_url
 from django.http import Http404
+from django.shortcuts import redirect, resolve_url, render
+from django.utils.html import escape, escapejs
 from django.utils.html import format_html
 
 from .models import AltText
 
 
-@admin.register(AltText)
 class AltTextAdmin(admin.ModelAdmin):
     fields = ["text", "preview"]
     readonly_fields = ["preview"]
@@ -27,6 +28,25 @@ class AltTextAdmin(admin.ModelAdmin):
                 "<img src='{}{}' style='max-width: 500px;'>", settings.MEDIA_URL, path
             )
         return ""
+
+    def response_change(self, request, obj):
+        """
+        Handle popup responses in Django 1.7 and earlier
+        """
+        if VERSION < (1, 8) and admin.options.IS_POPUP_VAR in request.POST:
+            pk_value = obj._get_pk_val()
+            return render(
+                request,
+                "admin/popup_response.html",
+                {
+                    "pk_value": escape(pk_value),
+                    "value": escape(pk_value),
+                    "obj": escapejs(obj),
+                },
+            )
+
+        # Continue as usual
+        return super(AltTextAdmin, self).response_change(request, obj)
 
     def get_urls(self):
         urls = super(AltTextAdmin, self).get_urls()
@@ -58,3 +78,6 @@ class AltTextAdmin(admin.ModelAdmin):
         Hide from the admin menu unless explicitly enabled in settings.
         """
         return getattr(settings, "ALTTEXT_ADMIN_DISPLAY", False)
+
+
+admin.site.register(AltText, AltTextAdmin)
