@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/unplugstudio/django-alttext/compare/v1.0.4...v1.1.0) (2019-09-14)
+
+
+### Features
+
+* add support for Django 1.7 and earlier ([9fcea03](https://github.com/unplugstudio/django-alttext/commit/9fcea03))
+
+
+
 ## [1.0.4](https://github.com/unplugstudio/django-alttext/compare/v1.0.3...v1.0.4) (2019-07-13)
 
 
