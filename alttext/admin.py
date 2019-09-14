@@ -38,11 +38,7 @@ class AltTextAdmin(admin.ModelAdmin):
             return render(
                 request,
                 "admin/popup_response.html",
-                {
-                    "pk_value": escape(pk_value),
-                    "value": escape(pk_value),
-                    "obj": escapejs(obj),
-                },
+                {"pk_value": escape(pk_value), "value": escape(pk_value), "obj": escapejs(obj)},
             )
 
         # Continue as usual
