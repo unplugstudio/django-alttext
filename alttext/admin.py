@@ -24,7 +24,8 @@ class AltTextAdmin(admin.ModelAdmin):
         path = getattr(obj, "path", "")
         if path.lower().endswith((".jpg", ".jpeg", ".gif", ".png")):
             return format_html(
-                "<img src='{}{}' style='max-width: 500px;'>", settings.MEDIA_URL, path)
+                "<img src='{}{}' style='max-width: 500px;'>", settings.MEDIA_URL, path
+            )
         return ""
 
     def get_urls(self):
@@ -33,7 +34,8 @@ class AltTextAdmin(admin.ModelAdmin):
             url(
                 r"^get-or-create/$",
                 self.admin_site.admin_view(self.get_or_create_alttext),
-                name="get_or_create_alttext"),
+                name="get_or_create_alttext",
+            )
         ]
         return extra_urls + urls
 

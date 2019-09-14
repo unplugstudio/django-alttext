@@ -5,4 +5,4 @@ from django.apps import AppConfig
 
 
 class AltTextConfig(AppConfig):
-    name = 'alt text'
+    name = "alt text"

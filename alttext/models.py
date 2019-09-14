@@ -9,6 +9,7 @@ class AltText(models.Model):
     """
     Alt text related to a file by its path.
     """
+
     text = models.CharField("Text", max_length=255)
     path = models.CharField("File path", max_length=255, db_index=True, unique=True)
 
