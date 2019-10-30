@@ -23,7 +23,13 @@
 				var popupFunction = showRelatedObjectPopup
 			} catch {
 				// Django 1.7 and earlier
-				var popupFunction = showRelatedObjectLookupPopup
+				try {
+					var popupFunction = showRelatedObjectLookupPopup
+				} catch {
+					// We might be in a page without popup support
+					console.log('django-alttext: No popup function found')
+					return // Bail
+				}
 			}
 
 			// Add a link to edit alt text after each FileBrowser thumbnail
