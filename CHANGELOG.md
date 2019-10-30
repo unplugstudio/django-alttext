@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/unplugstudio/django-alttext/compare/v1.1.0...v1.1.1) (2019-10-30)
+
+
+### Bug Fixes
+
+* handle pages where no popup function exists ([a414788](https://github.com/unplugstudio/django-alttext/commit/a414788))
+
+
+
 # [1.1.0](https://github.com/unplugstudio/django-alttext/compare/v1.0.4...v1.1.0) (2019-09-14)
 
 
