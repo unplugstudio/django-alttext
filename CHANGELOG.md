@@ -60,3 +60,8 @@
 
 
 
+# 1.1.2
+
+### Features
+
+* add compatibility for django 2.2 ([de20a8d] (https://github.com/unplugstudio/django-alttext/commit/de20a8d071438e8797c84fd10bb52be21f814d4b))
